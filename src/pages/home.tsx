@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Paintbrush, Upload, MessageCircle } from "lucide-react";
 import { PRODUCTS } from "@/lib/data";
 import { ProductCard } from "@/components/shop/product-card";
+import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -78,6 +79,104 @@ export default function Home() {
           is a stark collision of light and dark, designed for those who let the
           silhouette speak.
         </motion.p>
+      </section>
+
+      {/* Custom Print Section */}
+      <section className="relative py-28 md:py-36 bg-black text-white overflow-hidden">
+        {/* Subtle grid pattern background */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="relative z-10 container mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <span className="inline-block text-xs font-bold tracking-[0.4em] uppercase text-gray-400 mb-6">
+              Custom Service
+            </span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-display uppercase leading-none mb-8">
+              Your Design,
+              <br />
+              <span className="text-gray-500">Our Craft</span>
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-16 leading-relaxed">
+              Got a vision? Send us your own artwork or design and we'll print
+              it on a premium LYVON heavyweight tee — your creativity, our
+              quality.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-4xl mx-auto mb-16">
+            {[
+              {
+                icon: Paintbrush,
+                title: "Custom Artwork",
+                desc: "Personalise any tee with your own graphics, text, or illustrations.",
+              },
+              {
+                icon: Upload,
+                title: "Send Your Design",
+                desc: "Share your design file via WhatsApp and we handle the rest.",
+              },
+              {
+                icon: MessageCircle,
+                title: "WhatsApp to Order",
+                desc: "Discuss sizing, placement & pricing — all through a quick chat.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="border border-white/10 p-8 text-center hover:border-white/30 transition-colors"
+              >
+                <item.icon
+                  size={28}
+                  className="mx-auto mb-5 text-gray-400"
+                  strokeWidth={1.5}
+                />
+                <h3 className="font-display text-lg uppercase tracking-wide mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-center"
+          >
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                "Hi LYVON! I'd like to get a custom t-shirt printed with my own design. Can you share the details?"
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-white text-black px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors"
+            >
+              <MessageCircle size={16} />
+              Start Your Custom Order
+            </a>
+          </motion.div>
+        </div>
       </section>
 
       {/* Featured Products */}

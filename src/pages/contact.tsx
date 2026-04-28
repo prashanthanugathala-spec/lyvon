@@ -113,6 +113,7 @@ export default function Contact() {
                   className="flex h-12 w-full border border-gray-300 bg-transparent px-3 py-1 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black disabled:cursor-not-allowed disabled:opacity-50 md:text-sm rounded-none"
                 >
                   <option>Order Support</option>
+                  <option>Custom T-Shirt Design</option>
                   <option>Sizing & Fit</option>
                   <option>Press / Editorial</option>
                   <option>Wholesale</option>
@@ -183,6 +184,7 @@ export default function Contact() {
                 <li>Standard delivery across India: 4-7 business days.</li>
                 <li>Returns accepted within 7 days of delivery for unworn pieces.</li>
                 <li>Size guide and fit advice available — message us.</li>
+                <li><strong className="text-foreground">Custom prints:</strong> Send your own design via WhatsApp and we'll print it on a premium LYVON tee.</li>
               </ul>
             </div>
           </div>
